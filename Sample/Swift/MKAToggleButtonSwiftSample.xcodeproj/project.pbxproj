@@ -1,0 +1,399 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5E11C4202213FC9500F9106F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E11C41F2213FC9500F9106F /* AppDelegate.swift */; };
+		5E11C4222213FC9500F9106F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E11C4212213FC9500F9106F /* ViewController.swift */; };
+		5E11C4252213FC9500F9106F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E11C4232213FC9500F9106F /* Main.storyboard */; };
+		5E11C4272213FC9500F9106F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E11C4262213FC9500F9106F /* Assets.xcassets */; };
+		5E11C42A2213FC9500F9106F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E11C4282213FC9500F9106F /* LaunchScreen.storyboard */; };
+		5E11C4332213FD2E00F9106F /* MKAToggleButton.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E11C4322213FD2E00F9106F /* MKAToggleButton.framework */; };
+		5E73DE9B22142BAB00698249 /* square@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E73DE9322142BAB00698249 /* square@2x.png */; };
+		5E73DE9C22142BAB00698249 /* triangle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E73DE9422142BAB00698249 /* triangle@2x.png */; };
+		5E73DE9D22142BAB00698249 /* star@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E73DE9522142BAB00698249 /* star@2x.png */; };
+		5E73DE9E22142BAB00698249 /* star@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E73DE9622142BAB00698249 /* star@3x.png */; };
+		5E73DE9F22142BAB00698249 /* circle@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E73DE9722142BAB00698249 /* circle@3x.png */; };
+		5E73DEA022142BAB00698249 /* circle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E73DE9822142BAB00698249 /* circle@2x.png */; };
+		5E73DEA122142BAB00698249 /* square@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E73DE9922142BAB00698249 /* square@3x.png */; };
+		5E73DEA222142BAB00698249 /* triangle@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E73DE9A22142BAB00698249 /* triangle@3x.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		5E11C41C2213FC9500F9106F /* MKAToggleButtonSwiftSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MKAToggleButtonSwiftSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5E11C41F2213FC9500F9106F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		5E11C4212213FC9500F9106F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5E11C4242213FC9500F9106F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		5E11C4262213FC9500F9106F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5E11C4292213FC9500F9106F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		5E11C42B2213FC9500F9106F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5E11C4322213FD2E00F9106F /* MKAToggleButton.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MKAToggleButton.framework; sourceTree = "<group>"; };
+		5E73DE9322142BAB00698249 /* square@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "square@2x.png"; sourceTree = "<group>"; };
+		5E73DE9422142BAB00698249 /* triangle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "triangle@2x.png"; sourceTree = "<group>"; };
+		5E73DE9522142BAB00698249 /* star@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star@2x.png"; sourceTree = "<group>"; };
+		5E73DE9622142BAB00698249 /* star@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star@3x.png"; sourceTree = "<group>"; };
+		5E73DE9722142BAB00698249 /* circle@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "circle@3x.png"; sourceTree = "<group>"; };
+		5E73DE9822142BAB00698249 /* circle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "circle@2x.png"; sourceTree = "<group>"; };
+		5E73DE9922142BAB00698249 /* square@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "square@3x.png"; sourceTree = "<group>"; };
+		5E73DE9A22142BAB00698249 /* triangle@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "triangle@3x.png"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5E11C4192213FC9500F9106F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5E11C4332213FD2E00F9106F /* MKAToggleButton.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5E11C4132213FC9400F9106F = {
+			isa = PBXGroup;
+			children = (
+				5E11C4312213FD2E00F9106F /* Framework */,
+				5E11C41E2213FC9500F9106F /* MKAToggleButtonSwiftSample */,
+				5E11C41D2213FC9500F9106F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5E11C41D2213FC9500F9106F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5E11C41C2213FC9500F9106F /* MKAToggleButtonSwiftSample.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5E11C41E2213FC9500F9106F /* MKAToggleButtonSwiftSample */ = {
+			isa = PBXGroup;
+			children = (
+				5E11C41F2213FC9500F9106F /* AppDelegate.swift */,
+				5E11C4262213FC9500F9106F /* Assets.xcassets */,
+				5E11C42B2213FC9500F9106F /* Info.plist */,
+				5E11C4282213FC9500F9106F /* LaunchScreen.storyboard */,
+				5E11C4232213FC9500F9106F /* Main.storyboard */,
+				5E11C441221400F500F9106F /* Resources */,
+				5E11C4212213FC9500F9106F /* ViewController.swift */,
+			);
+			path = MKAToggleButtonSwiftSample;
+			sourceTree = "<group>";
+		};
+		5E11C4312213FD2E00F9106F /* Framework */ = {
+			isa = PBXGroup;
+			children = (
+				5E11C4322213FD2E00F9106F /* MKAToggleButton.framework */,
+			);
+			path = Framework;
+			sourceTree = "<group>";
+		};
+		5E11C441221400F500F9106F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5E73DE9822142BAB00698249 /* circle@2x.png */,
+				5E73DE9722142BAB00698249 /* circle@3x.png */,
+				5E73DE9322142BAB00698249 /* square@2x.png */,
+				5E73DE9922142BAB00698249 /* square@3x.png */,
+				5E73DE9522142BAB00698249 /* star@2x.png */,
+				5E73DE9622142BAB00698249 /* star@3x.png */,
+				5E73DE9422142BAB00698249 /* triangle@2x.png */,
+				5E73DE9A22142BAB00698249 /* triangle@3x.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5E11C41B2213FC9500F9106F /* MKAToggleButtonSwiftSample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5E11C42E2213FC9500F9106F /* Build configuration list for PBXNativeTarget "MKAToggleButtonSwiftSample" */;
+			buildPhases = (
+				5E11C4182213FC9500F9106F /* Sources */,
+				5E11C4192213FC9500F9106F /* Frameworks */,
+				5E11C41A2213FC9500F9106F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MKAToggleButtonSwiftSample;
+			productName = MKAToggleButtonSwiftSample;
+			productReference = 5E11C41C2213FC9500F9106F /* MKAToggleButtonSwiftSample.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5E11C4142213FC9400F9106F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1010;
+				LastUpgradeCheck = 1010;
+				ORGANIZATIONNAME = "Hituzi Ando";
+				TargetAttributes = {
+					5E11C41B2213FC9500F9106F = {
+						CreatedOnToolsVersion = 10.1;
+					};
+				};
+			};
+			buildConfigurationList = 5E11C4172213FC9400F9106F /* Build configuration list for PBXProject "MKAToggleButtonSwiftSample" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5E11C4132213FC9400F9106F;
+			productRefGroup = 5E11C41D2213FC9500F9106F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5E11C41B2213FC9500F9106F /* MKAToggleButtonSwiftSample */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5E11C41A2213FC9500F9106F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5E73DE9D22142BAB00698249 /* star@2x.png in Resources */,
+				5E73DE9C22142BAB00698249 /* triangle@2x.png in Resources */,
+				5E11C42A2213FC9500F9106F /* LaunchScreen.storyboard in Resources */,
+				5E73DEA222142BAB00698249 /* triangle@3x.png in Resources */,
+				5E73DE9E22142BAB00698249 /* star@3x.png in Resources */,
+				5E73DEA122142BAB00698249 /* square@3x.png in Resources */,
+				5E73DEA022142BAB00698249 /* circle@2x.png in Resources */,
+				5E11C4272213FC9500F9106F /* Assets.xcassets in Resources */,
+				5E73DE9F22142BAB00698249 /* circle@3x.png in Resources */,
+				5E11C4252213FC9500F9106F /* Main.storyboard in Resources */,
+				5E73DE9B22142BAB00698249 /* square@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5E11C4182213FC9500F9106F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5E11C4222213FC9500F9106F /* ViewController.swift in Sources */,
+				5E11C4202213FC9500F9106F /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		5E11C4232213FC9500F9106F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5E11C4242213FC9500F9106F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		5E11C4282213FC9500F9106F /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5E11C4292213FC9500F9106F /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5E11C42C2213FC9500F9106F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		5E11C42D2213FC9500F9106F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5E11C42F2213FC9500F9106F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Framework",
+				);
+				INFOPLIST_FILE = MKAToggleButtonSwiftSample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = jp.hituzi.MKAToggleButtonSwiftSample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5E11C4302213FC9500F9106F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Framework",
+				);
+				INFOPLIST_FILE = MKAToggleButtonSwiftSample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = jp.hituzi.MKAToggleButtonSwiftSample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5E11C4172213FC9400F9106F /* Build configuration list for PBXProject "MKAToggleButtonSwiftSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5E11C42C2213FC9500F9106F /* Debug */,
+				5E11C42D2213FC9500F9106F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5E11C42E2213FC9500F9106F /* Build configuration list for PBXNativeTarget "MKAToggleButtonSwiftSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5E11C42F2213FC9500F9106F /* Debug */,
+				5E11C4302213FC9500F9106F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5E11C4142213FC9400F9106F /* Project object */;
+}
