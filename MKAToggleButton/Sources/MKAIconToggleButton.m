@@ -124,7 +124,7 @@
             return [self.images[index] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         }
         else {
-            return self.images[index];
+            return [self.images[index] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
         }
     }
     else {
