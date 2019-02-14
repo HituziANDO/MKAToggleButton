@@ -30,13 +30,19 @@ NS_ASSUME_NONNULL_BEGIN
 @interface MKAIconToggleButton : UIButton
 
 @property (nonatomic, copy, nullable) IBInspectable NSString *imageNames;
+/**
+ * Tells whether rendering mode is template mode.
+ */
 @property (nonatomic, getter=isImageTemplate) IBInspectable BOOL imageTemplate;
 @property (nonatomic, copy, nullable) void (^clickHandler)(id sender);
-@property (nonatomic) NSUInteger selectedIndex;
+@property (nonatomic) NSUInteger selectedIndex DEPRECATED_MSG_ATTRIBUTE("Uses `currentStateIndex` instead of this.");
+@property (nonatomic) NSUInteger currentStateIndex;
 
 + (instancetype)toggleButtonWithImages:(NSArray<UIImage *> *)images;
 
 - (instancetype)withImages:(NSArray<UIImage *> *)images;
+
+- (void)nextState;
 
 @end
 

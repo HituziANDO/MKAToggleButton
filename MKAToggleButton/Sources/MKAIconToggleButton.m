@@ -62,20 +62,28 @@
 
 #pragma mark - property
 
+- (NSUInteger)selectedIndex {
+    return self.currentStateIndex;
+}
+
 - (void)setSelectedIndex:(NSUInteger)selectedIndex {
-    if (selectedIndex < 0) {
+    self.currentStateIndex = selectedIndex;
+}
+
+- (void)setCurrentStateIndex:(NSUInteger)currentStateIndex {
+    if (currentStateIndex < 0) {
         @throw [NSException exceptionWithName:NSRangeException
-                                       reason:@"`selectedIndex` must be upper than or equal to 0"
+                                       reason:@"`currentStateIndex` must be upper than or equal to 0"
                                      userInfo:nil];
     }
-    else if (selectedIndex < self.images.count) {
-        _selectedIndex = selectedIndex;
+    else if (currentStateIndex < self.images.count) {
+        _currentStateIndex = currentStateIndex;
     }
     else {
-        _selectedIndex = 0;
+        _currentStateIndex = 0;
     }
 
-    [self setImage:[self imageAtIndex:_selectedIndex] forState:UIControlStateNormal];
+    [self setImage:[self imageAtIndex:_currentStateIndex] forState:UIControlStateNormal];
 }
 
 #pragma mark - public method
@@ -96,10 +104,14 @@
     return self;
 }
 
+- (void)nextState {
+    ++self.currentStateIndex;
+}
+
 #pragma mark - private method
 
 - (void)mka_click:(id)sender {
-    ++self.selectedIndex;
+    ++self.currentStateIndex;
 
     if (self.clickHandler) {
         self.clickHandler(self);

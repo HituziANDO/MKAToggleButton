@@ -18,24 +18,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gbg-ok-qjB" customClass="MKAIconToggleButton">
-                                <rect key="frame" x="165" y="560" width="46" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B9c-iw-XSh" customClass="MKAIconToggleButton">
+                                <rect key="frame" x="164" y="552" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="imageTemplate" value="YES"/>
                                     <userDefinedRuntimeAttribute type="string" keyPath="imageNames" value="circle,square,triangle,star"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="imageTemplate" value="NO"/>
                                 </userDefinedRuntimeAttributes>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="gbg-ok-qjB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="T3c-Dh-nkI"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="gbg-ok-qjB" secondAttribute="bottom" constant="77" id="lLJ-M7-VLo"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="button2" destination="gbg-ok-qjB" id="Rb2-lp-YoS"/>
+                        <outlet property="button2" destination="B9c-iw-XSh" id="ud2-tw-SNz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
