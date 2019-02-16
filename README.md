@@ -62,6 +62,16 @@ pod "MKAToggleButton"
 	
 	TBA
 	
+	### Or Sets up in the Storyboard
+	
+	1. Sets `MKAIconToggleButton` class to Custom Class field in the storyboard
+		 
+		<img src="./README/setup1.png"/>
+		
+	2. Sets multiple image file names separated by commas to Image Names field
+		
+		<img src="./README/setup2.png"/>
+	
 ### Template Rendering Mode
 
 When the template mode is enabled, the toggle button applies its tintColor to the icon images.
