@@ -16,6 +16,8 @@ class ViewController: UIViewController {
     // Icon image files are specified by strings represented comma separator in Image Names field.
     @IBOutlet weak var button2: MKAIconToggleButton!
     private var        button3: MKAIconToggleButton!
+    private var        button4: MKAIconToggleButton!
+    private var        button5: MKAIconToggleButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,12 +62,35 @@ class ViewController: UIViewController {
 
         // Goes to next state. If the current state is last index, next state will be first index.
         self.button3.nextState()
+
+        // Creates an instance with sets of a title and an icon image.
+        self.button4 = MKAIconToggleButton(items: [["Circle": UIImage(named: "circle")!],
+                                                   ["Square": UIImage(named: "square")!],
+                                                   ["Triangle": UIImage(named: "triangle")!],
+                                                   ["Star": UIImage(named: "star")!]])
+        self.view.addSubview(self.button4)
+        self.button4.clickHandler = { sender in
+            if let button = sender as? MKAIconToggleButton {
+                print("[4] index=\(button.currentStateIndex)")
+            }
+        }
+
+        // Creates an instance with titles.
+        self.button5 = MKAIconToggleButton(titles: ["Circle", "Square", "Triangle", "Star"])
+        self.view.addSubview(self.button5)
+        self.button5.clickHandler = { sender in
+            if let button = sender as? MKAIconToggleButton {
+                print("[5] index=\(button.currentStateIndex)")
+            }
+        }
     }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 
-        self.button1.center = CGPoint(x: self.button2.center.x, y: self.button2.center.y - 160.0)
-        self.button3.center = CGPoint(x: self.button1.center.x, y: self.button1.center.y - 160.0)
+        self.button1.center = CGPoint(x: self.button2.center.x, y: self.button2.center.y - 100.0)
+        self.button3.center = CGPoint(x: self.button1.center.x, y: self.button1.center.y - 100.0)
+        self.button4.center = CGPoint(x: self.button3.center.x, y: self.button3.center.y - 100.0)
+        self.button5.center = CGPoint(x: self.button4.center.x, y: self.button4.center.y - 100.0)
     }
 }

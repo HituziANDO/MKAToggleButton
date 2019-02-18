@@ -39,8 +39,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) NSUInteger currentStateIndex;
 
 + (instancetype)toggleButtonWithImages:(NSArray<UIImage *> *)images;
++ (instancetype)toggleButtonWithTitles:(NSArray<NSString *> *)titles;
++ (instancetype)toggleButtonWithItems:(NSArray<NSDictionary<NSString *, UIImage *> *> *)items;
 
-- (instancetype)withImages:(NSArray<UIImage *> *)images;
+- (instancetype)withImages:(NSArray<UIImage *> *)images DEPRECATED_MSG_ATTRIBUTE(
+    "Uses `+ toggleButtonWithImages:` instead of this.");
 
 - (void)nextState;
 
