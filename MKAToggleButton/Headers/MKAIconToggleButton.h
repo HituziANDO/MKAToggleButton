@@ -40,7 +40,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (instancetype)toggleButtonWithImages:(NSArray<UIImage *> *)images;
 + (instancetype)toggleButtonWithTitles:(NSArray<NSString *> *)titles;
++ (instancetype)toggleButtonWithTitles:(NSArray<NSString *> *)titles
+                                  font:(nullable UIFont *)font
+                                 color:(nullable UIColor *)color;
 + (instancetype)toggleButtonWithItems:(NSArray<NSDictionary<NSString *, UIImage *> *> *)items;
++ (instancetype)toggleButtonWithItems:(NSArray<NSDictionary<NSString *, UIImage *> *> *)items
+                                 font:(nullable UIFont *)font
+                                color:(nullable UIColor *)color;
 
 - (instancetype)withImages:(NSArray<UIImage *> *)images DEPRECATED_MSG_ATTRIBUTE(
     "Uses `+ toggleButtonWithImages:` instead of this.");

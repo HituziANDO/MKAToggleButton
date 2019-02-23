@@ -60,12 +60,29 @@ static const CGFloat MKAIconToggleButtonMarginX = 16.f;
     return [[[MKAIconToggleButton new] setImages:images] build];
 }
 
-// TODO: withFont: for size calculation
 + (instancetype)toggleButtonWithTitles:(NSArray<NSString *> *)titles {
-    return [[[MKAIconToggleButton new] setTitles:titles] build];
+    return [self toggleButtonWithTitles:titles font:nil color:nil];
+}
+
++ (instancetype)toggleButtonWithTitles:(NSArray<NSString *> *)titles
+                                  font:(nullable UIFont *)font
+                                 color:(nullable UIColor *)color {
+
+    MKAIconToggleButton *toggleButton = [[MKAIconToggleButton new] setTitles:titles];
+    toggleButton.titleLabel.font = font;
+    toggleButton.tintColor = color;
+
+    return [toggleButton build];
 }
 
 + (instancetype)toggleButtonWithItems:(NSArray<NSDictionary<NSString *, UIImage *> *> *)items {
+    return [self toggleButtonWithItems:items font:nil color:nil];
+}
+
++ (instancetype)toggleButtonWithItems:(NSArray<NSDictionary<NSString *, UIImage *> *> *)items
+                                 font:(nullable UIFont *)font
+                                color:(nullable UIColor *)color {
+
     NSMutableArray *titles = [NSMutableArray arrayWithCapacity:items.count];
     NSMutableArray *images = [NSMutableArray arrayWithCapacity:items.count];
 
@@ -74,7 +91,11 @@ static const CGFloat MKAIconToggleButtonMarginX = 16.f;
         [images addObject:obj[obj.allKeys.firstObject]];
     }];
 
-    return [[[[MKAIconToggleButton new] setImages:images] setTitles:titles] build];
+    MKAIconToggleButton *toggleButton = [[[MKAIconToggleButton new] setImages:images] setTitles:titles];
+    toggleButton.titleLabel.font = font;
+    toggleButton.tintColor = color;
+
+    return [toggleButton build];
 }
 
 - (instancetype)init {

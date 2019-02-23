@@ -3,7 +3,7 @@ MKAToggleButton
 
 ***MKAToggleButton is multiple icons toggle button for iOS.***
 
-<img src="./README/toggle1.gif"/><img src="./README/toggle2.gif"/>
+<img src="./README/toggle1.gif"/><img src="./README/toggle2.gif"/><img src="./README/toggle3.gif"/><img src="./README/toggle4.gif"/>
 
 ## Include in your iOS app
 

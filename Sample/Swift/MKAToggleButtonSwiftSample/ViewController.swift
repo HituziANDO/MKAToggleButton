@@ -67,7 +67,9 @@ class ViewController: UIViewController {
         self.button4 = MKAIconToggleButton(items: [["Circle": UIImage(named: "circle")!],
                                                    ["Square": UIImage(named: "square")!],
                                                    ["Triangle": UIImage(named: "triangle")!],
-                                                   ["Star": UIImage(named: "star")!]])
+                                                   ["Star": UIImage(named: "star")!]],
+                                           font: UIFont.systemFont(ofSize: 40.0, weight: .bold),
+                                           color: .gray)
         self.view.addSubview(self.button4)
         self.button4.clickHandler = { sender in
             if let button = sender as? MKAIconToggleButton {
@@ -76,7 +78,12 @@ class ViewController: UIViewController {
         }
 
         // Creates an instance with titles.
-        self.button5 = MKAIconToggleButton(titles: ["Circle", "Square", "Triangle", "Star"])
+        self.button5 = MKAIconToggleButton(titles: ["Circle", "Square", "Triangle", "Star"],
+                                           font: UIFont.systemFont(ofSize: 24.0),
+                                           color: UIColor(red: 52.0 / 255.0, green: 152.0 / 255.0, blue: 219.0 / 255.0, alpha: 1.0))
+        self.button5.layer.borderWidth = 1.0
+        self.button5.layer.borderColor = self.button5.tintColor.cgColor
+        self.button5.layer.cornerRadius = 4.0
         self.view.addSubview(self.button5)
         self.button5.clickHandler = { sender in
             if let button = sender as? MKAIconToggleButton {
