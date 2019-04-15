@@ -18,12 +18,12 @@ pod "MKAToggleButton"
 
 ### Manual Installation
 
-1. Downloads latest [MKAToggleButton](https://github.com/HituziANDO/MKAToggleButton/releases)
-1. Drags & Drops MKAToggleButton.framework into your Xcode project
+1. Download latest [MKAToggleButton](https://github.com/HituziANDO/MKAToggleButton/releases)
+1. Drag & Drop MKAToggleButton.framework into your Xcode project
 
 ## Quick Usage
 
-1. Imports the module
+1. Import the module
 	
 	**Swift**
 	
@@ -37,7 +37,7 @@ pod "MKAToggleButton"
 	#import <MKAToggleButton/MKAToggleButton.h>
 	```
 
-2. Creates an instance and sets up
+2. Create an instance and set up
 	
 	**Swift**
 	
@@ -60,15 +60,30 @@ pod "MKAToggleButton"
 	
 	**Objective-C**
 	
-	TBA
+	```objc
+	// Creates an instance with icon images.
+	MKAIconToggleButton *toggleButton = [MKAIconToggleButton toggleButtonWithImages:@[
+	    [UIImage imageNamed:@"circle"],
+	    [UIImage imageNamed:@"square"],
+	    [UIImage imageNamed:@"triangle"],
+	    [UIImage imageNamed:@"star"]
+	]];
+	[self.view addSubview:toggleButton];
 	
-	### Or Sets up in the Storyboard
+	// Should use click handler for user interaction.
+	toggleButton.clickHandler = ^(id sender) {
+	    // `currentStateIndex` property returns the current state.
+	    NSLog(@"index=%ld", (long) ((MKAIconToggleButton *) sender).currentStateIndex);
+	};
+	```
 	
-	1. Sets `MKAIconToggleButton` class to Custom Class field in the storyboard
+	### Or Set up in the Storyboard
+	
+	1. Set `MKAIconToggleButton` class to Custom Class field in the storyboard
 		 
 		<img src="./README/setup1.png"/>
 		
-	2. Sets multiple image file names separated by commas to Image Names field
+	2. Set multiple image file names separated by commas to Image Names field
 		
 		<img src="./README/setup2.png"/>
 	
@@ -79,14 +94,24 @@ When the template mode is enabled, the toggle button applies its tintColor to th
 **Swift**
 
 ```swift
-// Uses the template rendering mode and sets a color to `tintColor`.
+// Use the template rendering mode and set a color to `tintColor`.
 toggleButton.isImageTemplate = true
-toggleButton.tintColor = UIColor(red: 241.0 / 255.0, green: 196.0 / 255.0, blue: 15.0 / 255.0, alpha: 1.0)
+toggleButton.tintColor = UIColor(red: 241.0 / 255.0, 
+                                 green: 196.0 / 255.0, 
+                                 blue: 15.0 / 255.0, 
+                                 alpha: 1.0)
 ```
 
 **Objective-C**
 
-TBA
+```objc
+// Use the template rendering mode and set a color to `tintColor`.
+toggleButton.imageTemplate = YES;
+toggleButton.tintColor = [UIColor colorWithRed:241.f / 255.f
+                                         green:196.f / 255.f
+                                          blue:15.f / 255.f
+                                         alpha:1.f];
+```
 
 ----
 
