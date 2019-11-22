@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "MKAToggleButton"
-  s.version      = "1.1.0"
+  s.version      = "1.2.0"
   s.summary      = "MKAToggleButton is multiple icons toggle button for iOS."
 
   # This description is used to generate tags and improve search results.
@@ -51,7 +51,7 @@ MKAToggleButton is multiple icons toggle button for iOS.
   #  profile URL.
   #
 
-  s.author       = { "Hituzi Ando" => "MAIL" }
+  s.author       = "Hituzi Ando"
 
 
   # ――― Platform Specifics ――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
