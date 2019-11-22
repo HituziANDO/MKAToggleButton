@@ -25,7 +25,7 @@
 
 #import "MKAIconToggleButton.h"
 
-@interface MKAToggleItem : NSObject
+@interface MKAToggleItem ()
 
 @property (nonatomic, nullable) UIImage *image;
 @property (nonatomic, copy, nullable) NSString *title;
@@ -36,10 +36,28 @@
 
 @implementation MKAToggleItem
 
++ (instancetype)toggleItemWithImage:(nullable UIImage *)image title:(nullable NSString *)title {
+    MKAToggleItem *item = [MKAToggleItem new];
+    item.image = image;
+    item.title = title;
+    return item;
+}
+
++ (instancetype)toggleItemWithImage:(UIImage *)image {
+    MKAToggleItem *item = [MKAToggleItem new];
+    item.image = image;
+    return item;
+}
+
++ (instancetype)toggleItemWithTitle:(NSString *)title {
+    MKAToggleItem *item = [MKAToggleItem new];
+    item.title = title;
+    return item;
+}
+
 - (CGSize)sizeWithFont:(UIFont *)font {
     CGSize imageSize = self.image ? self.image.size : CGSizeZero;
     CGSize titleSize = self.title ? [self.title sizeWithAttributes:@{ NSFontAttributeName: font }] : CGSizeZero;
-
     return CGSizeMake(imageSize.width + titleSize.width, imageSize.height + titleSize.height);
 }
 
@@ -56,46 +74,66 @@
 // Margin left + margin right for `titleLabel`
 static const CGFloat MKAIconToggleButtonMarginX = 16.f;
 
++ (instancetype)toggleButtonWithItems:(NSArray<MKAToggleItem *> *)items {
+    return [self toggleButtonWithItems:items font:nil color:nil];
+}
+
++ (instancetype)toggleButtonWithItems:(NSArray<MKAToggleItem *> *)items
+                                 font:(nullable UIFont *)font
+                                color:(nullable UIColor *)color {
+
+    MKAIconToggleButton *button = [MKAIconToggleButton new];
+    [button.items addObjectsFromArray:items];
+    button.titleLabel.font = font;
+    button.tintColor = color;
+
+    return [button build];
+}
+
++ (instancetype)toggleButtonWithDictionary:(NSArray<NSDictionary<NSString *, UIImage *> *> *)dictionary {
+    return [self toggleButtonWithDictionary:dictionary font:nil color:nil];
+}
+
++ (instancetype)toggleButtonWithDictionary:(NSArray<NSDictionary<NSString *, UIImage *> *> *)dictionary
+                                      font:(nullable UIFont *)font
+                                     color:(nullable UIColor *)color {
+
+    NSMutableArray<MKAToggleItem *> *items = [NSMutableArray new];
+    [dictionary enumerateObjectsUsingBlock:^(NSDictionary<NSString *, UIImage *> *obj, NSUInteger idx, BOOL *stop) {
+        NSString *title = obj.allKeys.firstObject;
+        UIImage *image = obj[obj.allKeys.firstObject];
+        [items addObject:[MKAToggleItem toggleItemWithImage:image title:title]];
+    }];
+
+    return [self toggleButtonWithItems:items font:font color:color];
+}
+
 + (instancetype)toggleButtonWithImages:(NSArray<UIImage *> *)images {
-    return [[[MKAIconToggleButton new] setImages:images] build];
+    NSMutableArray<MKAToggleItem *> *items = [NSMutableArray new];
+    [images enumerateObjectsUsingBlock:^(UIImage *obj, NSUInteger idx, BOOL *stop) {
+        [items addObject:[MKAToggleItem toggleItemWithImage:obj title:nil]];
+    }];
+
+    return [self toggleButtonWithItems:items font:nil color:nil];
 }
 
 + (instancetype)toggleButtonWithTitles:(NSArray<NSString *> *)titles {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
     return [self toggleButtonWithTitles:titles font:nil color:nil];
+#pragma clang diagnostic pop
 }
 
 + (instancetype)toggleButtonWithTitles:(NSArray<NSString *> *)titles
                                   font:(nullable UIFont *)font
                                  color:(nullable UIColor *)color {
 
-    MKAIconToggleButton *toggleButton = [[MKAIconToggleButton new] setTitles:titles];
-    toggleButton.titleLabel.font = font;
-    toggleButton.tintColor = color;
-
-    return [toggleButton build];
-}
-
-+ (instancetype)toggleButtonWithItems:(NSArray<NSDictionary<NSString *, UIImage *> *> *)items {
-    return [self toggleButtonWithItems:items font:nil color:nil];
-}
-
-+ (instancetype)toggleButtonWithItems:(NSArray<NSDictionary<NSString *, UIImage *> *> *)items
-                                 font:(nullable UIFont *)font
-                                color:(nullable UIColor *)color {
-
-    NSMutableArray *titles = [NSMutableArray arrayWithCapacity:items.count];
-    NSMutableArray *images = [NSMutableArray arrayWithCapacity:items.count];
-
-    [items enumerateObjectsUsingBlock:^(NSDictionary<NSString *, UIImage *> *obj, NSUInteger idx, BOOL *stop) {
-        [titles addObject:obj.allKeys.firstObject];
-        [images addObject:obj[obj.allKeys.firstObject]];
+    NSMutableArray<MKAToggleItem *> *items = [NSMutableArray new];
+    [titles enumerateObjectsUsingBlock:^(NSString *obj, NSUInteger idx, BOOL *stop) {
+        [items addObject:[MKAToggleItem toggleItemWithImage:nil title:obj]];
     }];
 
-    MKAIconToggleButton *toggleButton = [[[MKAIconToggleButton new] setImages:images] setTitles:titles];
-    toggleButton.titleLabel.font = font;
-    toggleButton.tintColor = color;
-
-    return [toggleButton build];
+    return [self toggleButtonWithItems:items font:font color:color];
 }
 
 - (instancetype)init {
@@ -131,18 +169,16 @@ static const CGFloat MKAIconToggleButtonMarginX = 16.f;
 
     NSArray<NSString *> *imageNamesArray = [self.imageNames componentsSeparatedByString:@","];
 
-    NSMutableArray<UIImage *> *images = [NSMutableArray new];
-
     for (NSString *imageName in imageNamesArray) {
         NSString *name = [imageName stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
         UIImage *image = [UIImage imageNamed:name];
 
         if (image) {
-            [images addObject:image];
+            [self.items addObject:[MKAToggleItem toggleItemWithImage:image title:nil]];
         }
     }
 
-    [[self setImages:images] build];
+    [self build];
 }
 
 - (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event {
@@ -158,14 +194,6 @@ static const CGFloat MKAIconToggleButtonMarginX = 16.f;
     rect.size.width += (self.touchableExtensionLeft + self.touchableExtensionRight);
     rect.size.height += (self.touchableExtensionTop + self.touchableExtensionBottom);
     return rect;
-}
-
-- (NSUInteger)selectedIndex {
-    return self.currentStateIndex;
-}
-
-- (void)setSelectedIndex:(NSUInteger)selectedIndex {
-    self.currentStateIndex = selectedIndex;
 }
 
 - (void)setCurrentStateIndex:(NSUInteger)currentStateIndex {
@@ -188,10 +216,6 @@ static const CGFloat MKAIconToggleButtonMarginX = 16.f;
 
 #pragma mark - public method
 
-- (instancetype)withImages:(NSArray<UIImage *> *)images {
-    return [[self setImages:images] build];
-}
-
 - (void)nextState {
     ++self.currentStateIndex;
 }
@@ -199,54 +223,20 @@ static const CGFloat MKAIconToggleButtonMarginX = 16.f;
 #pragma mark - private method
 
 - (instancetype)build {
-    MKAToggleItem *item = self.items.firstObject;
+    self.currentStateIndex = 0;
+    [self addTarget:self action:@selector(mka_click:) forControlEvents:UIControlEventTouchUpInside];
 
-    if (item) {
-        self.currentStateIndex = 0;
-        [self addTarget:self action:@selector(mka_click:) forControlEvents:UIControlEventTouchUpInside];
+    __block CGSize maxSize = CGSizeZero;
+    [self.items enumerateObjectsUsingBlock:^(MKAToggleItem *item, NSUInteger idx, BOOL *stop) {
+        CGSize size = [item sizeWithFont:self.titleLabel.font];
 
-        __block CGSize maxSize = CGSizeZero;
-        [self.items enumerateObjectsUsingBlock:^(MKAToggleItem *item, NSUInteger idx, BOOL *stop) {
-            CGSize size = [item sizeWithFont:self.titleLabel.font];
-
-            if (maxSize.width < size.width) {
-                maxSize = size;
-            }
-        }];
-        self.bounds = (CGRect) { CGPointZero, CGSizeMake(maxSize.width + MKAIconToggleButtonMarginX, maxSize.height) };
-    }
-
-    return self;
-}
-
-- (instancetype)setImages:(NSArray<UIImage *> *)images {
-    [images enumerateObjectsUsingBlock:^(UIImage *image, NSUInteger idx, BOOL *stop) {
-        MKAToggleItem *item = [self findOrCreateToggleItemAtIndex:idx];
-        item.image = image;
+        if (maxSize.width < size.width) {
+            maxSize = size;
+        }
     }];
+    self.bounds = (CGRect) { CGPointZero, CGSizeMake(maxSize.width + MKAIconToggleButtonMarginX, maxSize.height) };
 
     return self;
-}
-
-- (instancetype)setTitles:(NSArray<NSString *> *)titles {
-    [titles enumerateObjectsUsingBlock:^(NSString *title, NSUInteger idx, BOOL *stop) {
-        MKAToggleItem *item = [self findOrCreateToggleItemAtIndex:idx];
-        item.title = title;
-    }];
-
-    return self;
-}
-
-- (MKAToggleItem *)findOrCreateToggleItemAtIndex:(NSUInteger)index {
-    if (index < self.items.count) {
-        return self.items[index];
-    }
-    else {
-        MKAToggleItem *item = [MKAToggleItem new];
-        [self.items addObject:item];
-
-        return item;
-    }
 }
 
 - (void)mka_click:(id)sender {

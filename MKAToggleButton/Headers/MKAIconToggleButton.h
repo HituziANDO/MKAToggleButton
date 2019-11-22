@@ -27,6 +27,41 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@interface MKAToggleItem : NSObject
+/**
+ * An icon.
+ */
+@property (nonatomic, nullable, readonly) UIImage *image;
+/**
+ * A title.
+ */
+@property (nonatomic, copy, nullable, readonly) NSString *title;
+
+/**
+ * Creates an item.
+ *
+ * @param image An icon.
+ * @param title A title.
+ * @return An item.
+ */
++ (instancetype)toggleItemWithImage:(nullable UIImage *)image title:(nullable NSString *)title;
+/**
+ * Creates an item.
+ *
+ * @param image An icon.
+ * @return An item.
+ */
++ (instancetype)toggleItemWithImage:(UIImage *)image;
+/**
+ * Creates an item.
+ *
+ * @param title A title.
+ * @return An item.
+ */
++ (instancetype)toggleItemWithTitle:(NSString *)title;
+
+@end
+
 @interface MKAIconToggleButton : UIButton
 /**
  * Touchable extension left.
@@ -54,23 +89,37 @@ NS_ASSUME_NONNULL_BEGIN
  * Tells whether rendering mode is template mode.
  */
 @property (nonatomic, getter=isImageTemplate) IBInspectable BOOL imageTemplate;
+/**
+ * A handler when the click event occurred.
+ */
 @property (nonatomic, copy, nullable) void (^clickHandler)(id sender);
-@property (nonatomic) NSUInteger selectedIndex DEPRECATED_MSG_ATTRIBUTE("Uses `currentStateIndex` instead of this.");
+/**
+ * Current state.
+ */
 @property (nonatomic) NSUInteger currentStateIndex;
 
-+ (instancetype)toggleButtonWithImages:(NSArray<UIImage *> *)images;
-+ (instancetype)toggleButtonWithTitles:(NSArray<NSString *> *)titles;
-+ (instancetype)toggleButtonWithTitles:(NSArray<NSString *> *)titles
-                                  font:(nullable UIFont *)font
-                                 color:(nullable UIColor *)color;
-+ (instancetype)toggleButtonWithItems:(NSArray<NSDictionary<NSString *, UIImage *> *> *)items;
-+ (instancetype)toggleButtonWithItems:(NSArray<NSDictionary<NSString *, UIImage *> *> *)items
++ (instancetype)toggleButtonWithItems:(NSArray<MKAToggleItem *> *)items;
++ (instancetype)toggleButtonWithItems:(NSArray<MKAToggleItem *> *)items
                                  font:(nullable UIFont *)font
                                 color:(nullable UIColor *)color;
++ (instancetype)toggleButtonWithDictionary:(NSArray<NSDictionary<NSString *, UIImage *> *> *)dictionary
+DEPRECATED_MSG_ATTRIBUTE("Use `toggleButtonWithItems:` method instead.");;
++ (instancetype)toggleButtonWithDictionary:(NSArray<NSDictionary<NSString *, UIImage *> *> *)dictionary
+                                      font:(nullable UIFont *)font
+                                     color:(nullable UIColor *)color
+DEPRECATED_MSG_ATTRIBUTE("Use `toggleButtonWithItems:font:color:` method instead.");
++ (instancetype)toggleButtonWithImages:(NSArray<UIImage *> *)images
+DEPRECATED_MSG_ATTRIBUTE("Use `toggleButtonWithItems:` method instead.");
++ (instancetype)toggleButtonWithTitles:(NSArray<NSString *> *)titles
+DEPRECATED_MSG_ATTRIBUTE("Use `toggleButtonWithItems:` method instead.");
++ (instancetype)toggleButtonWithTitles:(NSArray<NSString *> *)titles
+                                  font:(nullable UIFont *)font
+                                 color:(nullable UIColor *)color
+DEPRECATED_MSG_ATTRIBUTE("Use `toggleButtonWithItems:font:color:` method instead.");
 
-- (instancetype)withImages:(NSArray<UIImage *> *)images DEPRECATED_MSG_ATTRIBUTE(
-    "Uses `+ toggleButtonWithImages:` instead of this.");
-
+/**
+ * Moves to next state.
+ */
 - (void)nextState;
 
 @end

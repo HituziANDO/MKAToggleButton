@@ -11,31 +11,90 @@ import MKAToggleButton
 
 class ViewController: UIViewController {
 
-    private var        button1: MKAIconToggleButton!
-    // `button2` is created from the storyboard.
-    // Icon image files are specified by strings represented comma separator in Image Names field.
-    @IBOutlet weak var button2: MKAIconToggleButton!
-    private var        button3: MKAIconToggleButton!
-    private var        button4: MKAIconToggleButton!
-    private var        button5: MKAIconToggleButton!
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
+    private lazy var button1: MKAIconToggleButton = {
         // Creates an instance with icon images.
-        self.button1 = MKAIconToggleButton(images: [UIImage(named: "circle")!,
-                                                    UIImage(named: "square")!,
-                                                    UIImage(named: "triangle")!,
-                                                    UIImage(named: "star")!])
-        self.view.addSubview(self.button1)
+        let button = MKAIconToggleButton(items: [MKAToggleItem(image: UIImage(named: "circle")!),
+                                                 MKAToggleItem(image: UIImage(named: "square")!),
+                                                 MKAToggleItem(image: UIImage(named: "triangle")!),
+                                                 MKAToggleItem(image: UIImage(named: "star")!)])
 
         // Should use click handler for user interaction.
-        self.button1.clickHandler = { sender in
+        button.clickHandler = { sender in
             if let button = sender as? MKAIconToggleButton {
                 // `currentStateIndex` property returns the current state.
                 print("[1] index=\(button.currentStateIndex)")
             }
         }
+
+        // Changes the current state.
+        button.currentStateIndex = 1
+
+        return button
+    }()
+
+    // `button2` is created from the storyboard.
+    // Icon image files are specified by strings represented comma separator in Image Names field.
+    @IBOutlet weak var button2: MKAIconToggleButton!
+
+    private lazy var button3: MKAIconToggleButton = {
+        let button = MKAIconToggleButton(items: [MKAToggleItem(image: UIImage(named: "unstarred")!),
+                                                 MKAToggleItem(image: UIImage(named: "starred")!)])
+
+        // Uses the template rendering mode and sets a color to `tintColor`.
+        button.isImageTemplate = true
+        button.tintColor = UIColor(red: 241.0 / 255.0, green: 196.0 / 255.0, blue: 15.0 / 255.0, alpha: 1.0)
+
+        button.clickHandler = { sender in
+            if let button = sender as? MKAIconToggleButton {
+                print("[3] index=\(button.currentStateIndex)")
+            }
+        }
+
+        return button
+    }()
+
+    private lazy var button4: MKAIconToggleButton = {
+        // Creates an instance with sets of a title and an icon image.
+        let button = MKAIconToggleButton(items: [MKAToggleItem(image: UIImage(named: "circle"), title: "Circle"),
+                                                 MKAToggleItem(image: UIImage(named: "square"), title: "Square"),
+                                                 MKAToggleItem(image: UIImage(named: "triangle"), title: "Triangle"),
+                                                 MKAToggleItem(image: UIImage(named: "star"), title: "Start")],
+                                         font: UIFont.systemFont(ofSize: 40.0, weight: .bold),
+                                         color: .gray)
+        button.clickHandler = { sender in
+            if let button = sender as? MKAIconToggleButton {
+                print("[4] index=\(button.currentStateIndex)")
+            }
+        }
+        return button
+    }()
+
+    private lazy var button5: MKAIconToggleButton = {
+        // Creates an instance with titles.
+        let button = MKAIconToggleButton(items: [MKAToggleItem(title: "Circle"),
+                                                 MKAToggleItem(title: "Square"),
+                                                 MKAToggleItem(title: "Triangle"),
+                                                 MKAToggleItem(title: "Star")],
+                                         font: UIFont.systemFont(ofSize: 24.0),
+                                         color: UIColor(red: 52.0 / 255.0, green: 152.0 / 255.0, blue: 219.0 / 255.0, alpha: 1.0))
+        button.layer.borderWidth = 1.0
+        button.layer.borderColor = button.tintColor.cgColor
+        button.layer.cornerRadius = 4.0
+        button.clickHandler = { sender in
+            if let button = sender as? MKAIconToggleButton {
+                print("[5] index=\(button.currentStateIndex)")
+            }
+        }
+        return button
+    }()
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        self.view.addSubview(self.button1)
+        self.view.addSubview(self.button3)
+        self.view.addSubview(self.button4)
+        self.view.addSubview(self.button5)
 
         self.button2.clickHandler = { sender in
             if let button = sender as? MKAIconToggleButton {
@@ -43,53 +102,8 @@ class ViewController: UIViewController {
             }
         }
 
-        // Changes the current state.
-        self.button2.currentStateIndex = 1
-
-        self.button3 = MKAIconToggleButton(images: [UIImage(named: "unstarred")!,
-                                                    UIImage(named: "starred")!])
-        self.view.addSubview(self.button3)
-
-        // Uses the template rendering mode and sets a color to `tintColor`.
-        self.button3.isImageTemplate = true
-        self.button3.tintColor = UIColor(red: 241.0 / 255.0, green: 196.0 / 255.0, blue: 15.0 / 255.0, alpha: 1.0)
-
-        self.button3.clickHandler = { sender in
-            if let button = sender as? MKAIconToggleButton {
-                print("[3] index=\(button.currentStateIndex)")
-            }
-        }
-
         // Goes to next state. If the current state is last index, next state will be first index.
         self.button3.nextState()
-
-        // Creates an instance with sets of a title and an icon image.
-        self.button4 = MKAIconToggleButton(items: [["Circle": UIImage(named: "circle")!],
-                                                   ["Square": UIImage(named: "square")!],
-                                                   ["Triangle": UIImage(named: "triangle")!],
-                                                   ["Star": UIImage(named: "star")!]],
-                                           font: UIFont.systemFont(ofSize: 40.0, weight: .bold),
-                                           color: .gray)
-        self.view.addSubview(self.button4)
-        self.button4.clickHandler = { sender in
-            if let button = sender as? MKAIconToggleButton {
-                print("[4] index=\(button.currentStateIndex)")
-            }
-        }
-
-        // Creates an instance with titles.
-        self.button5 = MKAIconToggleButton(titles: ["Circle", "Square", "Triangle", "Star"],
-                                           font: UIFont.systemFont(ofSize: 24.0),
-                                           color: UIColor(red: 52.0 / 255.0, green: 152.0 / 255.0, blue: 219.0 / 255.0, alpha: 1.0))
-        self.button5.layer.borderWidth = 1.0
-        self.button5.layer.borderColor = self.button5.tintColor.cgColor
-        self.button5.layer.cornerRadius = 4.0
-        self.view.addSubview(self.button5)
-        self.button5.clickHandler = { sender in
-            if let button = sender as? MKAIconToggleButton {
-                print("[5] index=\(button.currentStateIndex)")
-            }
-        }
     }
 
     override func viewDidLayoutSubviews() {
