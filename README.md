@@ -31,63 +31,60 @@ pod "MKAToggleButton"
 	import MKAToggleButton
 	```
 	
-	**Objective-C**
-	
-	```objc
-	#import <MKAToggleButton/MKAToggleButton.h>
-	```
-
 2. Create an instance and set up
 	
 	**Swift**
 	
 	```swift
-	// Creates an instance with icon images.
-	let toggleButton = MKAIconToggleButton(images: [UIImage(named: "circle")!,
-	                                                UIImage(named: "square")!,
-	                                                UIImage(named: "triangle")!,
-	                                                UIImage(named: "star")!])
-	self.view.addSubview(toggleButton)
-	
-	// Should use click handler for user interaction.
-	toggleButton.clickHandler = { sender in
-	    if let button = sender as? MKAIconToggleButton {
-	        // `currentStateIndex` property returns the current state.
-	        print("index=\(button.currentStateIndex)")
-	    }
-	}
+	private lazy var toggleButton: MKAIconToggleButton = {
+        // Creates an instance with options.
+        let button = MKAIconToggleButton(items: [MKAToggleItem(image: UIImage(named: "circle"), title: "Circle"),
+                                                 MKAToggleItem(image: UIImage(named: "square"), title: "Square"),
+                                                 MKAToggleItem(image: UIImage(named: "triangle"), title: "Triangle"),
+                                                 MKAToggleItem(image: UIImage(named: "star"), title: "Start")],
+                                         font: UIFont.systemFont(ofSize: 40.0, weight: .bold),
+                                         color: .gray)
+
+        // Should use click handler for user interaction.
+        button.clickHandler = { sender in
+            if let button = sender as? MKAIconToggleButton {
+                // `currentStateIndex` property returns the current state.
+                // The toggle button automatically increments the state each time it is clicked.
+                // When the current state is last, the next state is rewinded to the first.
+                print("index=\(button.currentStateIndex)")
+            }
+        }
+
+        // Sets the initial state. By default, the initial state index is zero.
+        button.currentStateIndex = 1
+
+        return button
+    }()
 	```
 	
-	**Objective-C**
+1. Add the toggle button to a parent view
 	
-	```objc
-	// Creates an instance with icon images.
-	MKAIconToggleButton *toggleButton = [MKAIconToggleButton toggleButtonWithImages:@[
-	    [UIImage imageNamed:@"circle"],
-	    [UIImage imageNamed:@"square"],
-	    [UIImage imageNamed:@"triangle"],
-	    [UIImage imageNamed:@"star"]
-	]];
-	[self.view addSubview:toggleButton];
+	**Swift**
 	
-	// Should use click handler for user interaction.
-	toggleButton.clickHandler = ^(id sender) {
-	    // `currentStateIndex` property returns the current state.
-	    NSLog(@"index=%ld", (long) ((MKAIconToggleButton *) sender).currentStateIndex);
-	};
+	```swift
+	override func viewDidLoad() {
+        super.viewDidLoad()
+
+        self.view.addSubview(self.toggleButton)
+   }
 	```
 	
-	### Or Set up in the Storyboard
+## Use the toggle button in the storyboard
 	
-	1. Set `MKAIconToggleButton` class to Custom Class field in the storyboard
-		 
-		<img src="./README/setup1.png"/>
-		
-	2. Set multiple image file names separated by commas to Image Names field
-		
-		<img src="./README/setup2.png"/>
+1. Set `MKAIconToggleButton` class to Custom Class field in the storyboard
 	
-### Template Rendering Mode
+	<img src="./README/setup1.png"/>
+	
+2. Set multiple image file names separated by commas to Image Names field
+	
+	<img src="./README/setup2.png"/>
+	
+## Template Rendering Mode
 
 When the template mode is enabled, the toggle button applies its tintColor to the icon images.
 
@@ -100,17 +97,6 @@ toggleButton.tintColor = UIColor(red: 241.0 / 255.0,
                                  green: 196.0 / 255.0, 
                                  blue: 15.0 / 255.0, 
                                  alpha: 1.0)
-```
-
-**Objective-C**
-
-```objc
-// Use the template rendering mode and set a color to `tintColor`.
-toggleButton.imageTemplate = YES;
-toggleButton.tintColor = [UIColor colorWithRed:241.f / 255.f
-                                         green:196.f / 255.f
-                                          blue:15.f / 255.f
-                                         alpha:1.f];
 ```
 
 ----

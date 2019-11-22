@@ -94,7 +94,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, copy, nullable) void (^clickHandler)(id sender);
 /**
- * Current state.
+ * The current state. The toggle button automatically increments the state each time it is clicked.
  */
 @property (nonatomic) NSUInteger currentStateIndex;
 
@@ -118,7 +118,7 @@ DEPRECATED_MSG_ATTRIBUTE("Use `toggleButtonWithItems:` method instead.");
 DEPRECATED_MSG_ATTRIBUTE("Use `toggleButtonWithItems:font:color:` method instead.");
 
 /**
- * Moves to next state.
+ * Moves to the next state manually. When the current state is last, the next state is rewinded to the first.
  */
 - (void)nextState;
 

@@ -22,11 +22,13 @@ class ViewController: UIViewController {
         button.clickHandler = { sender in
             if let button = sender as? MKAIconToggleButton {
                 // `currentStateIndex` property returns the current state.
+                // The toggle button automatically increments the state each time it is clicked.
+                // When the current state is last, the next state is rewinded to the first.
                 print("[1] index=\(button.currentStateIndex)")
             }
         }
 
-        // Changes the current state.
+        // Sets the initial state. By default, the initial state index is zero.
         button.currentStateIndex = 1
 
         return button
@@ -102,7 +104,8 @@ class ViewController: UIViewController {
             }
         }
 
-        // Goes to next state. If the current state is last index, next state will be first index.
+        // Moves to next state manually.
+        // When the current state is last, the next state is rewinded to the first.
         self.button3.nextState()
     }
 
