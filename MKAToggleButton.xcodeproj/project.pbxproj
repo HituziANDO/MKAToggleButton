@@ -23,6 +23,7 @@
 /* Begin PBXBuildFile section */
 		5E11C3E62213F1D300F9106F /* MKAToggleButton.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5E11C3E32213F1D300F9106F /* MKAToggleButton.h */; };
 		5E11C4522214178900F9106F /* MKAIconToggleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E11C4512214178900F9106F /* MKAIconToggleButton.m */; };
+		5E1EC17E23882856006844C5 /* MKAIconToggleButton.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5E11C4502214178900F9106F /* MKAIconToggleButton.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -32,6 +33,7 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				5E1EC17E23882856006844C5 /* MKAIconToggleButton.h in CopyFiles */,
 				5E11C3E62213F1D300F9106F /* MKAToggleButton.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

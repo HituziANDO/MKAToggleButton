@@ -145,7 +145,20 @@ static const CGFloat MKAIconToggleButtonMarginX = 16.f;
     [[self setImages:images] build];
 }
 
+- (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event {
+    return CGRectContainsPoint(self.touchableBounds, point);
+}
+
 #pragma mark - property
+
+- (CGRect)touchableBounds {
+    CGRect rect = self.bounds;
+    rect.origin.x -= self.touchableExtensionLeft;
+    rect.origin.y -= self.touchableExtensionTop;
+    rect.size.width += (self.touchableExtensionLeft + self.touchableExtensionRight);
+    rect.size.height += (self.touchableExtensionTop + self.touchableExtensionBottom);
+    return rect;
+}
 
 - (NSUInteger)selectedIndex {
     return self.currentStateIndex;

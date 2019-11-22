@@ -28,6 +28,26 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface MKAIconToggleButton : UIButton
+/**
+ * Touchable extension left.
+ */
+@property (nonatomic) IBInspectable CGFloat touchableExtensionLeft;
+/**
+ * Touchable extension top.
+ */
+@property (nonatomic) IBInspectable CGFloat touchableExtensionTop;
+/**
+ * Touchable extension right.
+ */
+@property (nonatomic) IBInspectable CGFloat touchableExtensionRight;
+/**
+ * Touchable extension bottom.
+ */
+@property (nonatomic) IBInspectable CGFloat touchableExtensionBottom;
+/**
+ * Touchable bounds.
+ */
+@property (nonatomic, readonly) CGRect touchableBounds;
 
 @property (nonatomic, copy, nullable) IBInspectable NSString *imageNames;
 /**
