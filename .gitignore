@@ -69,6 +69,5 @@ iOSInjectionProject/
 #
 MKAToggleButton/build
 MKAToggleButton/Framework
-Sample/ObjC/Framework/MKAToggleButton.framework
-Sample/Swift/Framework/MKAToggleButton.framework
 Framework
+!Sample/Framework

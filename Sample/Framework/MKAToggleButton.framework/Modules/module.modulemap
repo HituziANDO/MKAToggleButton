@@ -1,0 +1,6 @@
+framework module MKAToggleButton {
+  umbrella header "MKAToggleButton.h"
+
+  export *
+  module * { export * }
+}

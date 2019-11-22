@@ -8,7 +8,7 @@
       location = "container:"
       name = "Sample">
       <FileRef
-         location = "group:Sample/Swift/MKAToggleButtonSwiftSample.xcodeproj">
+         location = "group:Sample/MKAToggleButtonSwiftSample.xcodeproj">
       </FileRef>
    </Group>
 </Workspace>
