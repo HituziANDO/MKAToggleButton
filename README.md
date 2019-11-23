@@ -101,4 +101,4 @@ toggleButton.tintColor = UIColor(red: 241.0 / 255.0,
 
 ----
 
-More info, see my [sample code](https://github.com/HituziANDO/MKAToggleButton/blob/master/Sample/Swift/MKAToggleButtonSwiftSample/ViewController.swift).
+More info, see my [sample code](https://github.com/HituziANDO/MKAToggleButton/blob/master/Sample/MKAToggleButtonSwiftSample/ViewController.swift).
