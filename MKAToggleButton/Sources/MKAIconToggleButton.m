@@ -66,6 +66,7 @@
 @interface MKAIconToggleButton ()
 
 @property (nonatomic, copy) NSMutableArray<MKAToggleItem *> *items;
+@property (nonatomic, nullable) UIColor *tintColorCache;
 
 @end
 
@@ -187,6 +188,11 @@ static const CGFloat MKAIconToggleButtonMarginX = 16.f;
 
 #pragma mark - property
 
+- (void)setTintColor:(UIColor *)color {
+    [super setTintColor:color];
+    self.tintColorCache = color;
+}
+
 - (CGRect)touchableBounds {
     CGRect rect = self.bounds;
     rect.origin.x -= self.touchableExtensionLeft;
@@ -236,6 +242,14 @@ static const CGFloat MKAIconToggleButtonMarginX = 16.f;
     }];
     self.bounds = (CGRect) { CGPointZero, CGSizeMake(maxSize.width + MKAIconToggleButtonMarginX, maxSize.height) };
 
+    self.tintColorCache = self.tintColor;
+
+    if (@available(iOS 13.0, *)) {
+        UIHoverGestureRecognizer *recognizer = [[UIHoverGestureRecognizer alloc] initWithTarget:self
+                                                                                         action:@selector(hovering:)];
+        [self addGestureRecognizer:recognizer];
+    }
+
     return self;
 }
 
@@ -267,6 +281,26 @@ static const CGFloat MKAIconToggleButtonMarginX = 16.f;
     }
     else {
         return nil;
+    }
+}
+
+- (void)hovering:(UIHoverGestureRecognizer *)recognizer API_AVAILABLE(ios(13.0)) {
+    if (!self.hoverColor) {
+        return;
+    }
+
+    switch (recognizer.state) {
+        case UIGestureRecognizerStateBegan:
+        case UIGestureRecognizerStateChanged:
+            self.tintColor = self.hoverColor;
+            [self setTitleColor:self.tintColor forState:UIControlStateNormal];
+            break;
+        case UIGestureRecognizerStateEnded:
+            self.tintColor = self.tintColorCache;
+            [self setTitleColor:self.tintColor forState:UIControlStateNormal];
+            break;
+        default:
+            break;
     }
 }
 

@@ -97,6 +97,10 @@ NS_ASSUME_NONNULL_BEGIN
  * The current state. The toggle button automatically increments the state each time it is clicked.
  */
 @property (nonatomic) NSUInteger currentStateIndex;
+/**
+ * A color when hovering. (iOS13+)
+ */
+@property (nonatomic, nullable) UIColor *hoverColor;
 
 + (instancetype)toggleButtonWithItems:(NSArray<MKAToggleItem *> *)items;
 + (instancetype)toggleButtonWithItems:(NSArray<MKAToggleItem *> *)items
