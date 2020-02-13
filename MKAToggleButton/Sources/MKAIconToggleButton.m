@@ -1,7 +1,7 @@
 //
 // MKAToggleButton
 //
-// Copyright (c) 2019-present Hituzi Ando. All rights reserved.
+// Copyright (c) 2020 Hituzi Ando. All rights reserved.
 //
 // MIT License
 //
@@ -67,6 +67,7 @@
 
 @property (nonatomic, copy) NSMutableArray<MKAToggleItem *> *items;
 @property (nonatomic, nullable) UIColor *tintColorCache;
+@property (nonatomic) UILongPressGestureRecognizer *longPressGesture;
 
 @end
 
@@ -116,7 +117,11 @@ static const CGFloat MKAIconToggleButtonMarginX = 16.f;
 }
 
 - (void)dealloc {
-    self.clickHandler = nil;
+    self.onClicked = nil;
+    self.onLongPressBegan = nil;
+    self.onLongPressChanged = nil;
+    self.onLongPressEnded = nil;
+    self.onLongPressCancelled = nil;
 }
 
 - (void)awakeFromNib {
@@ -174,6 +179,14 @@ static const CGFloat MKAIconToggleButtonMarginX = 16.f;
     [self setTitleColor:self.tintColor forState:UIControlStateNormal];
 }
 
+- (void)setClickHandler:(void (^)(id _Nonnull))clickHandler {
+    self.onClicked = clickHandler;
+}
+
+- (void (^)(id _Nonnull))clickHandler {
+    return self.onClicked;
+}
+
 #pragma mark - public method
 
 - (void)nextState {
@@ -196,6 +209,11 @@ static const CGFloat MKAIconToggleButtonMarginX = 16.f;
     }];
     self.bounds = (CGRect) { CGPointZero, CGSizeMake(maxSize.width + MKAIconToggleButtonMarginX, maxSize.height) };
 
+    self.longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self
+                                                                          action:@selector(mka_longPress:)];
+    self.longPressGesture.minimumPressDuration = 0.5;
+    [self addGestureRecognizer:self.longPressGesture];
+
     self.tintColorCache = self.tintColor;
 
     if (@available(iOS 13.0, *)) {
@@ -210,8 +228,35 @@ static const CGFloat MKAIconToggleButtonMarginX = 16.f;
 - (void)mka_click:(id)sender {
     ++self.currentStateIndex;
 
-    if (self.clickHandler) {
-        self.clickHandler(self);
+    if (self.onClicked) {
+        self.onClicked(self);
+    }
+}
+
+- (void)mka_longPress:(UILongPressGestureRecognizer *)gesture {
+    switch (gesture.state) {
+        case UIGestureRecognizerStateBegan:
+            if (self.onLongPressBegan) {
+                self.onLongPressBegan(self);
+            }
+            break;
+        case UIGestureRecognizerStateChanged:
+            if (self.onLongPressChanged) {
+                self.onLongPressChanged(self);
+            }
+            break;
+        case UIGestureRecognizerStateEnded:
+            if (self.onLongPressEnded) {
+                self.onLongPressEnded(self);
+            }
+            break;
+        case UIGestureRecognizerStateCancelled:
+            if (self.onLongPressCancelled) {
+                self.onLongPressCancelled(self);
+            }
+            break;
+        default:
+            break;
     }
 }
 

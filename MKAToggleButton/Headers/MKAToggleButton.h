@@ -1,7 +1,7 @@
 //
 // MKAToggleButton
 //
-// Copyright (c) 2019-present Hituzi Ando. All rights reserved.
+// Copyright (c) 2020 Hituzi Ando. All rights reserved.
 //
 // MIT License
 //

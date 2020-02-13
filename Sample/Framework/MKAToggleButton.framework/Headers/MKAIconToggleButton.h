@@ -1,7 +1,7 @@
 //
 // MKAToggleButton
 //
-// Copyright (c) 2019-present Hituzi Ando. All rights reserved.
+// Copyright (c) 2020 Hituzi Ando. All rights reserved.
 //
 // MIT License
 //
@@ -92,7 +92,32 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * A handler when the click event occurred.
  */
-@property (nonatomic, copy, nullable) void (^clickHandler)(id sender);
+@property (nonatomic, copy, nullable) void (^clickHandler)(id sender) DEPRECATED_MSG_ATTRIBUTE(
+    "Use `onClicked` instead.");
+/**
+ * A handler when the click event occurred.
+ */
+@property (nonatomic, copy, nullable) void (^onClicked)(MKAIconToggleButton *button);
+/**
+ * A handler when the long press event began.
+ */
+@property (nonatomic, copy, nullable) void (^onLongPressBegan)(MKAIconToggleButton *button);
+/**
+ * A handler when the long press event changed.
+ */
+@property (nonatomic, copy, nullable) void (^onLongPressChanged)(MKAIconToggleButton *button);
+/**
+ * A handler when the long press event ended.
+ */
+@property (nonatomic, copy, nullable) void (^onLongPressEnded)(MKAIconToggleButton *button);
+/**
+ * A handler when the long press event cancelled.
+ */
+@property (nonatomic, copy, nullable) void (^onLongPressCancelled)(MKAIconToggleButton *button);
+/**
+ * The long press gesture recognizer.
+ */
+@property (nonatomic, readonly) UILongPressGestureRecognizer *longPressGesture;
 /**
  * The current state. The toggle button automatically increments the state each time it is clicked.
  */
@@ -106,20 +131,6 @@ NS_ASSUME_NONNULL_BEGIN
 + (instancetype)toggleButtonWithItems:(NSArray<MKAToggleItem *> *)items
                                  font:(nullable UIFont *)font
                                 color:(nullable UIColor *)color;
-+ (instancetype)toggleButtonWithDictionary:(NSArray<NSDictionary<NSString *, UIImage *> *> *)dictionary
-DEPRECATED_MSG_ATTRIBUTE("Use `toggleButtonWithItems:` method instead.");;
-+ (instancetype)toggleButtonWithDictionary:(NSArray<NSDictionary<NSString *, UIImage *> *> *)dictionary
-                                      font:(nullable UIFont *)font
-                                     color:(nullable UIColor *)color
-DEPRECATED_MSG_ATTRIBUTE("Use `toggleButtonWithItems:font:color:` method instead.");
-+ (instancetype)toggleButtonWithImages:(NSArray<UIImage *> *)images
-DEPRECATED_MSG_ATTRIBUTE("Use `toggleButtonWithItems:` method instead.");
-+ (instancetype)toggleButtonWithTitles:(NSArray<NSString *> *)titles
-DEPRECATED_MSG_ATTRIBUTE("Use `toggleButtonWithItems:` method instead.");
-+ (instancetype)toggleButtonWithTitles:(NSArray<NSString *> *)titles
-                                  font:(nullable UIFont *)font
-                                 color:(nullable UIColor *)color
-DEPRECATED_MSG_ATTRIBUTE("Use `toggleButtonWithItems:font:color:` method instead.");
 
 /**
  * Moves to the next state manually. When the current state is last, the next state is rewinded to the first.

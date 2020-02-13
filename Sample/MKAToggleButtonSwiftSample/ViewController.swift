@@ -2,8 +2,7 @@
 //  ViewController.swift
 //  MKAToggleButtonSwiftSample
 //
-//  Created by Masaki Ando on 2019/02/13.
-//  Copyright © 2019年 Hituzi Ando. All rights reserved.
+//  Copyright © 2020 Hituzi Ando. All rights reserved.
 //
 
 import UIKit
@@ -18,15 +17,20 @@ class ViewController: UIViewController {
                                                  MKAToggleItem(image: UIImage(named: "triangle")!),
                                                  MKAToggleItem(image: UIImage(named: "star")!)])
 
-        // Should use click handler for user interaction.
-        button.clickHandler = { sender in
-            if let button = sender as? MKAIconToggleButton {
-                // `currentStateIndex` property returns the current state.
-                // The toggle button automatically increments the state each time it is clicked.
-                // When the current state is last, the next state is rewinded to the first.
-                print("[1] index=\(button.currentStateIndex)")
-            }
+        // Should use the click handler for user interaction.
+        button.onClicked = { button in
+            // `currentStateIndex` property returns the current state.
+            // The toggle button automatically increments the state each time it is clicked.
+            // When the current state is last, the next state is rewinded to the first.
+            print("[1] index=\(button.currentStateIndex)")
         }
+
+        // You can set the long press handler.
+        button.longPressGesture.minimumPressDuration = 1.0
+        button.onLongPressBegan = { print("[1] longPressBegan index=\($0.currentStateIndex)") }
+        button.onLongPressChanged = { print("[1] longPressChanged index=\($0.currentStateIndex)") }
+        button.onLongPressEnded = { print("[1] longPressEnded index=\($0.currentStateIndex)") }
+        button.onLongPressCancelled = { print("[1] longPressCancelled index=\($0.currentStateIndex)") }
 
         // Sets the initial state. By default, the initial state index is zero.
         button.currentStateIndex = 1
@@ -46,11 +50,7 @@ class ViewController: UIViewController {
         button.isImageTemplate = true
         button.tintColor = UIColor(red: 241.0 / 255.0, green: 196.0 / 255.0, blue: 15.0 / 255.0, alpha: 1.0)
 
-        button.clickHandler = { sender in
-            if let button = sender as? MKAIconToggleButton {
-                print("[3] index=\(button.currentStateIndex)")
-            }
-        }
+        button.onClicked = { print("[3] index=\($0.currentStateIndex)") }
 
         return button
     }()
@@ -63,11 +63,7 @@ class ViewController: UIViewController {
                                                  MKAToggleItem(image: UIImage(named: "star"), title: "Start")],
                                          font: UIFont.systemFont(ofSize: 40.0, weight: .bold),
                                          color: .gray)
-        button.clickHandler = { sender in
-            if let button = sender as? MKAIconToggleButton {
-                print("[4] index=\(button.currentStateIndex)")
-            }
-        }
+        button.onClicked = { print("[4] index=\($0.currentStateIndex)") }
         return button
     }()
 
@@ -82,11 +78,7 @@ class ViewController: UIViewController {
         button.layer.borderWidth = 1.0
         button.layer.borderColor = button.tintColor.cgColor
         button.layer.cornerRadius = 4.0
-        button.clickHandler = { sender in
-            if let button = sender as? MKAIconToggleButton {
-                print("[5] index=\(button.currentStateIndex)")
-            }
-        }
+        button.onClicked = { print("[5] index=\($0.currentStateIndex)") }
         return button
     }()
 
@@ -98,11 +90,7 @@ class ViewController: UIViewController {
         self.view.addSubview(self.button4)
         self.view.addSubview(self.button5)
 
-        self.button2.clickHandler = { sender in
-            if let button = sender as? MKAIconToggleButton {
-                print("[2] index=\(button.currentStateIndex)")
-            }
-        }
+        self.button2.onClicked = { print("[2] index=\($0.currentStateIndex)") }
 
         // Moves to next state manually.
         // When the current state is last, the next state is rewinded to the first.

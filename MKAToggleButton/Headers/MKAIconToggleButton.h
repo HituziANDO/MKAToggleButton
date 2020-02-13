@@ -1,7 +1,7 @@
 //
 // MKAToggleButton
 //
-// Copyright (c) 2019-present Hituzi Ando. All rights reserved.
+// Copyright (c) 2020 Hituzi Ando. All rights reserved.
 //
 // MIT License
 //
@@ -92,7 +92,32 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * A handler when the click event occurred.
  */
-@property (nonatomic, copy, nullable) void (^clickHandler)(id sender);
+@property (nonatomic, copy, nullable) void (^clickHandler)(id sender) DEPRECATED_MSG_ATTRIBUTE(
+    "Use `onClicked` instead.");
+/**
+ * A handler when the click event occurred.
+ */
+@property (nonatomic, copy, nullable) void (^onClicked)(MKAIconToggleButton *button);
+/**
+ * A handler when the long press event began.
+ */
+@property (nonatomic, copy, nullable) void (^onLongPressBegan)(MKAIconToggleButton *button);
+/**
+ * A handler when the long press event changed.
+ */
+@property (nonatomic, copy, nullable) void (^onLongPressChanged)(MKAIconToggleButton *button);
+/**
+ * A handler when the long press event ended.
+ */
+@property (nonatomic, copy, nullable) void (^onLongPressEnded)(MKAIconToggleButton *button);
+/**
+ * A handler when the long press event cancelled.
+ */
+@property (nonatomic, copy, nullable) void (^onLongPressCancelled)(MKAIconToggleButton *button);
+/**
+ * The long press gesture recognizer.
+ */
+@property (nonatomic, readonly) UILongPressGestureRecognizer *longPressGesture;
 /**
  * The current state. The toggle button automatically increments the state each time it is clicked.
  */

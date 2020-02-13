@@ -2,8 +2,7 @@
 //  AppDelegate.swift
 //  MKAToggleButtonSwiftSample
 //
-//  Created by Masaki Ando on 2019/02/13.
-//  Copyright © 2019年 Hituzi Ando. All rights reserved.
+//  Copyright © 2020 Hituzi Ando. All rights reserved.
 //
 
 import UIKit
