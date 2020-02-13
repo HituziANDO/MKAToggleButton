@@ -25,12 +25,18 @@ class ViewController: UIViewController {
             print("[1] index=\(button.currentStateIndex)")
         }
 
-        // You can set the long press handler.
+        // You can set the event handler that handle the long press event.
         button.longPressGesture.minimumPressDuration = 1.0
         button.onLongPressBegan = { print("[1] longPressBegan index=\($0.currentStateIndex)") }
         button.onLongPressChanged = { print("[1] longPressChanged index=\($0.currentStateIndex)") }
         button.onLongPressEnded = { print("[1] longPressEnded index=\($0.currentStateIndex)") }
         button.onLongPressCancelled = { print("[1] longPressCancelled index=\($0.currentStateIndex)") }
+
+        // You can extend touchable area.
+        button.touchableExtensionTop = 16.0
+        button.touchableExtensionLeft = 40.0
+        button.touchableExtensionBottom = 16.0
+        button.touchableExtensionRight = 40.0
 
         // Sets the initial state. By default, the initial state index is zero.
         button.currentStateIndex = 1
