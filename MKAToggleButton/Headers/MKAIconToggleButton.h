@@ -106,20 +106,6 @@ NS_ASSUME_NONNULL_BEGIN
 + (instancetype)toggleButtonWithItems:(NSArray<MKAToggleItem *> *)items
                                  font:(nullable UIFont *)font
                                 color:(nullable UIColor *)color;
-+ (instancetype)toggleButtonWithDictionary:(NSArray<NSDictionary<NSString *, UIImage *> *> *)dictionary
-DEPRECATED_MSG_ATTRIBUTE("Use `toggleButtonWithItems:` method instead.");;
-+ (instancetype)toggleButtonWithDictionary:(NSArray<NSDictionary<NSString *, UIImage *> *> *)dictionary
-                                      font:(nullable UIFont *)font
-                                     color:(nullable UIColor *)color
-DEPRECATED_MSG_ATTRIBUTE("Use `toggleButtonWithItems:font:color:` method instead.");
-+ (instancetype)toggleButtonWithImages:(NSArray<UIImage *> *)images
-DEPRECATED_MSG_ATTRIBUTE("Use `toggleButtonWithItems:` method instead.");
-+ (instancetype)toggleButtonWithTitles:(NSArray<NSString *> *)titles
-DEPRECATED_MSG_ATTRIBUTE("Use `toggleButtonWithItems:` method instead.");
-+ (instancetype)toggleButtonWithTitles:(NSArray<NSString *> *)titles
-                                  font:(nullable UIFont *)font
-                                 color:(nullable UIColor *)color
-DEPRECATED_MSG_ATTRIBUTE("Use `toggleButtonWithItems:font:color:` method instead.");
 
 /**
  * Moves to the next state manually. When the current state is last, the next state is rewinded to the first.

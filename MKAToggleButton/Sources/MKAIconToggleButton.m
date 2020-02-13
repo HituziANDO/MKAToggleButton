@@ -91,52 +91,6 @@ static const CGFloat MKAIconToggleButtonMarginX = 16.f;
     return [button build];
 }
 
-+ (instancetype)toggleButtonWithDictionary:(NSArray<NSDictionary<NSString *, UIImage *> *> *)dictionary {
-    return [self toggleButtonWithDictionary:dictionary font:nil color:nil];
-}
-
-+ (instancetype)toggleButtonWithDictionary:(NSArray<NSDictionary<NSString *, UIImage *> *> *)dictionary
-                                      font:(nullable UIFont *)font
-                                     color:(nullable UIColor *)color {
-
-    NSMutableArray<MKAToggleItem *> *items = [NSMutableArray new];
-    [dictionary enumerateObjectsUsingBlock:^(NSDictionary<NSString *, UIImage *> *obj, NSUInteger idx, BOOL *stop) {
-        NSString *title = obj.allKeys.firstObject;
-        UIImage *image = obj[obj.allKeys.firstObject];
-        [items addObject:[MKAToggleItem toggleItemWithImage:image title:title]];
-    }];
-
-    return [self toggleButtonWithItems:items font:font color:color];
-}
-
-+ (instancetype)toggleButtonWithImages:(NSArray<UIImage *> *)images {
-    NSMutableArray<MKAToggleItem *> *items = [NSMutableArray new];
-    [images enumerateObjectsUsingBlock:^(UIImage *obj, NSUInteger idx, BOOL *stop) {
-        [items addObject:[MKAToggleItem toggleItemWithImage:obj title:nil]];
-    }];
-
-    return [self toggleButtonWithItems:items font:nil color:nil];
-}
-
-+ (instancetype)toggleButtonWithTitles:(NSArray<NSString *> *)titles {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-    return [self toggleButtonWithTitles:titles font:nil color:nil];
-#pragma clang diagnostic pop
-}
-
-+ (instancetype)toggleButtonWithTitles:(NSArray<NSString *> *)titles
-                                  font:(nullable UIFont *)font
-                                 color:(nullable UIColor *)color {
-
-    NSMutableArray<MKAToggleItem *> *items = [NSMutableArray new];
-    [titles enumerateObjectsUsingBlock:^(NSString *obj, NSUInteger idx, BOOL *stop) {
-        [items addObject:[MKAToggleItem toggleItemWithImage:nil title:obj]];
-    }];
-
-    return [self toggleButtonWithItems:items font:font color:color];
-}
-
 - (instancetype)init {
     return [self initWithFrame:CGRectZero];
 }
