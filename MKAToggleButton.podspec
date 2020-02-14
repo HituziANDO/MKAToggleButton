@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "MKAToggleButton"
-  s.version      = "1.3.0"
+  s.version      = "1.3.1"
   s.summary      = "MKAToggleButton is the button has multiple states for iOS."
   s.description  = <<-DESC
 MKAToggleButton is the button has multiple states for iOS.

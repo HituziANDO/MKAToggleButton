@@ -100,7 +100,7 @@ class ViewController: UIViewController {
 
         // Moves to next state manually.
         // When the current state is last, the next state is rewinded to the first.
-        self.button3.nextState()
+        self.button4.nextState()
     }
 
     override func viewDidLayoutSubviews() {

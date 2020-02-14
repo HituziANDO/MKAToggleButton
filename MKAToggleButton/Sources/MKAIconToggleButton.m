@@ -149,6 +149,7 @@ static const CGFloat MKAIconToggleButtonMarginX = 16.f;
 
 - (void)setTintColor:(UIColor *)color {
     [super setTintColor:color];
+    [self reloadView];
     self.tintColorCache = color;
 }
 
@@ -159,6 +160,11 @@ static const CGFloat MKAIconToggleButtonMarginX = 16.f;
     rect.size.width += (self.touchableExtensionLeft + self.touchableExtensionRight);
     rect.size.height += (self.touchableExtensionTop + self.touchableExtensionBottom);
     return rect;
+}
+
+- (void)setImageTemplate:(BOOL)imageTemplate {
+    _imageTemplate = imageTemplate;
+    [self reloadView];
 }
 
 - (void)setCurrentStateIndex:(NSUInteger)currentStateIndex {
@@ -174,9 +180,7 @@ static const CGFloat MKAIconToggleButtonMarginX = 16.f;
         _currentStateIndex = 0;
     }
 
-    [self setImage:[self imageAtIndex:_currentStateIndex] forState:UIControlStateNormal];
-    [self setTitle:[self titleAtIndex:_currentStateIndex] forState:UIControlStateNormal];
-    [self setTitleColor:self.tintColor forState:UIControlStateNormal];
+    [self reloadView];
 }
 
 - (void)setClickHandler:(void (^)(id _Nonnull))clickHandler {
@@ -196,7 +200,9 @@ static const CGFloat MKAIconToggleButtonMarginX = 16.f;
 #pragma mark - private method
 
 - (instancetype)build {
+    // Set first view.
     self.currentStateIndex = 0;
+
     [self addTarget:self action:@selector(mka_click:) forControlEvents:UIControlEventTouchUpInside];
 
     __block CGSize maxSize = CGSizeZero;
@@ -258,6 +264,12 @@ static const CGFloat MKAIconToggleButtonMarginX = 16.f;
         default:
             break;
     }
+}
+
+- (void)reloadView {
+    [self setImage:[self imageAtIndex:self.currentStateIndex] forState:UIControlStateNormal];
+    [self setTitle:[self titleAtIndex:self.currentStateIndex] forState:UIControlStateNormal];
+    [self setTitleColor:self.tintColor forState:UIControlStateNormal];
 }
 
 - (nullable UIImage *)imageAtIndex:(NSUInteger)index {
