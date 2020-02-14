@@ -8,7 +8,7 @@ MKAToggleButton is the button has multiple states for iOS. See following samples
 ## Get Started
 ### Install Framework to Your iOS App
 
-You have two way to install this framework.
+You have two ways to install this framework.
 
 #### 1. CocoaPods
 
